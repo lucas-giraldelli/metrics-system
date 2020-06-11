@@ -1,6 +1,13 @@
 
 # Metric logging and reporting service
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/319465ae-0562-4d93-af64-4f5b6fd0406d/deploy-status)](https://metric-testing-service.netlify.app/)
+
+By clicking on the badge you can access the interface for testing.
+
+1. You can access https://metric-service.herokuapp.com/metric/all, for all metrics. 
+2. You can access https://metric-service.herokuapp.com/metric/{key}/sum, for the sum.
+
 ## Problem
 Build a metric logging and reporting service that sums metrics by time window for the most recent hour. You will build a lightweight web server that implements the two main APIs defined below.
 ## APIs
