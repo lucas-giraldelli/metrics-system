@@ -3,6 +3,6 @@ import loggingRouter from './logging.routes';
 
 const routes = Router();
 
-routes.use('/metrics', loggingRouter);
+routes.use('/metric', loggingRouter);
 
 export default routes;
