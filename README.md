@@ -52,5 +52,5 @@ To Start Server:
 or
 `yarn dev:server`
 
-To test the API, use postman or insomnia.
+To test the API, use postman or insomnia (./assets/api you can get the requests).
 The server has a built-in SQLite server (it's a file that storages everything).
