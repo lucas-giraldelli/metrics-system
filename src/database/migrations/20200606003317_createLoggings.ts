@@ -6,7 +6,8 @@ export async function up(knex: Knex): Promise<void> {
     table.string('id').primary();
     table.string('metric').notNullable();
     table.decimal('value').notNullable();
-    table.timestamp('created_at').defaultTo(knex.fn.now());
+    const created_at = new Date().toISOString();
+    table.string('created_at').defaultTo(created_at);
   });
 }
 

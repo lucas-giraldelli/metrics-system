@@ -1,13 +1,28 @@
+import { isThisHour, parseISO } from 'date-fns';
 import Logging from '../models/Logging';
 import connection from '../database/connection';
 
 class LoggingRepositories {
-  public async listByMetricAndSum(): Promise<Logging[] | undefined> {
-    // const logByMetric = this.loggings.filter(log => log.metric === metric);
+  public async listMetricByLastHourAndSum(
+    metric: string,
+  ): Promise<number | undefined> {
+    const getMetrics: Logging[] = await connection('loggings').where({
+      metric,
+    });
 
-    const logs: Logging[] = await connection('loggings').select('*');
+    const sumLastHour = getMetrics
+      .filter(eachMetric => {
+        const parsedDate = parseISO(eachMetric.created_at);
+        return isThisHour(parsedDate);
+      })
+      .map(eachMetric => {
+        return eachMetric.value;
+      })
+      .reduce((total, acc) => {
+        return total + acc;
+      });
 
-    return logs || undefined;
+    return sumLastHour || undefined;
   }
 
   public async listAll(): Promise<Logging[] | undefined> {

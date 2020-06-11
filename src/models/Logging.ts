@@ -7,9 +7,10 @@ class Logging {
 
   value: number;
 
+  created_at!: string;
+
   constructor(metric: string, value: number) {
     this.id = uuid();
-
     this.metric = metric;
     this.value = value;
   }
