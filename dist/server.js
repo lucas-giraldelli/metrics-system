@@ -23,10 +23,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importStar(require("express"));
+var cors_1 = __importDefault(require("cors"));
 var routes_1 = __importDefault(require("./routes"));
 var app = express_1.default();
+app.use(cors_1.default());
 app.use(express_1.json());
 app.use(routes_1.default);
-app.listen(3333, function () {
-    console.log('Server started on 3333');
+app.get('/', function (request, response) {
+    return response.json({ metric: 'Running!' });
+});
+app.listen(process.env.PORT || 3333, function () {
+    console.log('Server started!');
 });

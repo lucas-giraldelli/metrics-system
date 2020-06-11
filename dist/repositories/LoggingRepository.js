@@ -57,8 +57,13 @@ var LoggingRepositories = /** @class */ (function () {
                         getMetrics = _a.sent();
                         sumLastHour = getMetrics
                             .filter(function (eachMetric) {
+                            var hourNow = date_fns_1.parseISO(new Date().toISOString());
+                            console.log(hourNow);
                             var parsedDate = date_fns_1.parseISO(eachMetric.created_at);
-                            return date_fns_1.isThisHour(parsedDate);
+                            console.log(parsedDate);
+                            var oneHour = date_fns_1.differenceInHours(parsedDate, hourNow);
+                            console.log(oneHour);
+                            return oneHour < 1;
                         })
                             .map(function (eachMetric) {
                             return eachMetric.value;

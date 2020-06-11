@@ -73,7 +73,7 @@ loggingRouter.get('/:metric/sum', function (request, response) { return __awaite
     });
 }); });
 loggingRouter.post('/:metric', function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
-    var value, metric, roundedValue, logging;
+    var value, metric, roundedValue;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -85,8 +85,8 @@ loggingRouter.post('/:metric', function (request, response) { return __awaiter(v
                 roundedValue = Math.round(value);
                 return [4 /*yield*/, loggingRepository.create(metric, roundedValue)];
             case 1:
-                logging = _a.sent();
-                return [2 /*return*/, response.json(logging)];
+                _a.sent();
+                return [2 /*return*/, response.sendStatus(200)];
         }
     });
 }); });

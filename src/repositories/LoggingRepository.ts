@@ -1,4 +1,4 @@
-import { isThisHour, parseISO } from 'date-fns';
+import { parseISO, differenceInHours, parse } from 'date-fns';
 import Logging from '../models/Logging';
 import connection from '../database/connection';
 
@@ -12,8 +12,13 @@ class LoggingRepositories {
 
     const sumLastHour = getMetrics
       .filter(eachMetric => {
+        const hourNow = parseISO(new Date().toISOString());
+
         const parsedDate = parseISO(eachMetric.created_at);
-        return isThisHour(parsedDate);
+
+        const oneHour = differenceInHours(parsedDate, hourNow);
+
+        return oneHour < 1;
       })
       .map(eachMetric => {
         return eachMetric.value;
