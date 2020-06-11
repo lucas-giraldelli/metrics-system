@@ -6,6 +6,10 @@ const app = express();
 app.use(json());
 app.use(routes);
 
-app.listen(3333, () => {
-  console.log('Server started on 3333');
+app.get('/', (request, response) => {
+  return response.json({ metric: 'Running!' });
+});
+
+app.listen(process.env.PORT || 3333, () => {
+  console.log('Server started!');
 });
