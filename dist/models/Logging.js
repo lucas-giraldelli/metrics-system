@@ -6,6 +6,8 @@ var Logging = /** @class */ (function () {
         this.id = uuidv4_1.uuid();
         this.metric = metric;
         this.value = value;
+        var created_at = new Date().toISOString();
+        this.created_at = created_at;
     }
     return Logging;
 }());

@@ -44,8 +44,7 @@ function up(knex) {
                     table.string('id').primary();
                     table.string('metric').notNullable();
                     table.decimal('value').notNullable();
-                    var created_at = new Date().toISOString();
-                    table.string('created_at').defaultTo(created_at);
+                    table.string('created_at').notNullable();
                 })];
         });
     });

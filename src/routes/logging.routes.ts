@@ -34,9 +34,9 @@ loggingRouter.post('/:metric', async (request, response) => {
 
   const roundedValue = Math.round(value);
 
-  const logging = await loggingRepository.create(metric, roundedValue);
+  await loggingRepository.create(metric, roundedValue);
 
-  return response.json(logging);
+  return response.sendStatus(200);
 });
 
 export default loggingRouter;
